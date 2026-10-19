@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日系個人形象網頁 | 靜謐美學</title>
+    <!-- Tailwind CSS for utility styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for typography (Noto Serif JP & Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS styling for Japanese wabi-sabi minimalist aesthetic -->
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', 'Noto Serif JP', sans-serif;
+            background-color: #FBF9F5; /* Warm Wabi-Sabi paper white */
+            color: #2C2A29; /* Deep charcoal */
+            overflow-x: hidden;
+        }
+
+        .font-serif-jp {
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        /* Smooth fade transition between pages */
+        .page-section {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .page-section.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Custom soft shadows and card aesthetics */
+        .jp-card {
+            background: #FFFFFF;
+            border: 1px solid #EFECE6;
+            transition: all 0.3s ease;
+        }
+
+        .jp-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -10px rgba(44, 42, 41, 0.08);
+        }
+
+        /* Custom subtle scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FBF9F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4CEBE;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen selection:bg-[#D4CEBE] selection:text-[#2C2A29]">
+
+    <!-- 導航列 -->
+    <header class="sticky top-0 z-50 bg-[#FBF9F5]/90 backdrop-blur-md border-b border-[#EFECE6]">
+        <div class="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" onclick="switchPage('home')" class="font-serif-jp text-xl tracking-widest font-semibold hover:opacity-75 transition-opacity">
+                佐藤 蓮 <span class="text-xs font-normal tracking-normal text-[#7A756D] block">REN SATO</span>
+            </a>
+
+            <!-- 桌面版導航按鈕 -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm tracking-wider font-medium">
+                <button onclick="switchPage('home')" id="nav-home" class="nav-btn text-[#2C2A29] pb-1 border-b-2 border-[#2C2A29] transition-all">首頁</button>
+                <button onclick="switchPage('about')" id="nav-about" class="nav-btn text-[#7A756D] hover:text-[#2C2A29] pb-1 border-b-2 border-transparent transition-all">關於我</button>
+                <button onclick="switchPage('works')" id="nav-works" class="nav-btn text-[#7A756D] hover:text-[#2C2A29] pb-1 border-b-2 border-transparent transition-all">作品集</button>
+                <button onclick="switchPage('contact')" id="nav-contact" class="nav-btn text-[#7A756D] hover:text-[#2C2A29] pb-1 border-b-2 border-transparent transition-all">聯絡我</button>
+            </nav>
+
+            <!-- 手機版漢堡選單按鈕 -->
+            <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-[#2C2A29] focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- 手機版下拉選單 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#FBF9F5] border-b border-[#EFECE6] px-6 py-4 space-y-3">
+            <button onclick="switchPage('home'); toggleMobileMenu();" class="block w-full text-left py-2 text-[#2C2A29] font-medium">首頁</button>
+            <button onclick="switchPage('about'); toggleMobileMenu();" class="block w-full text-left py-2 text-[#7A756D]">關於我</button>
+            <button onclick="switchPage('works'); toggleMobileMenu();" class="block w-full text-left py-2 text-[#7A756D]">作品集</button>
+            <button onclick="switchPage('contact'); toggleMobileMenu();" class="block w-full text-left py-2 text-[#7A756D]">聯絡我</button>
+        </div>
+    </header>
+
+    <!-- 主體內容區 (多頁切換) -->
+    <main class="flex-grow max-w-5xl mx-auto w-full px-6 py-12 md:py-20">
+
+        <!-- 第一頁：首頁 (Home) -->
+        <section id="page-home" class="page-section active">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center min-h-[65vh]">
+                <div class="md:col-span-7 space-y-6">
+                    <span class="inline-block px-3 py-1 bg-[#EFECE6] text-[#5C574F] text-xs tracking-widest rounded-full font-medium">
+                        UI/UX DESIGNER & PHOTOGRAPHER
+                    </span>
+                    <h1 class="font-serif-jp text-4xl md:text-6xl font-normal leading-tight tracking-wide">
+                        在靜謐之中，<br>尋找設計的純粹本質。
+                    </h1>
+                    <p class="text-[#6B655D] text-base md:text-lg font-light leading-relaxed max-w-lg">
+                        你好，我是佐藤蓮。專注於極簡主義的數位介面設計與攝影藝術。透過減法哲學，為每位使用者創造溫潤而直覺的沉浸式體驗。
+                    </p>
+                    <div class="pt-4 flex flex-wrap gap-4">
+                        <button onclick="switchPage('works')" class="px-8 py-3.5 bg-[#2C2A29] text-[#FBF9F5] text-sm tracking-wider rounded-full hover:bg-[#4A4745] transition-all shadow-sm">
+                            瀏覽精選作品
+                        </button>
+                        <button onclick="switchPage('contact')" class="px-8 py-3.5 border border-[#D4CEBE] text-[#2C2A29] text-sm tracking-wider rounded-full hover:bg-[#EFECE6] transition-all">
+                            與我聯繫
+                        </button>
+                    </div>
+                </div>
+                <div class="md:col-span-5 flex justify-center">
+                    <div class="relative w-72 h-96 md:w-80 md:h-[420px] rounded-2xl overflow-hidden shadow-xl border border-[#EFECE6]">
+                        <img src="https://placehold.co/600x800/E5E0D5/5C574F?text=Ren+Sato" alt="佐藤蓮個人形象照" class="w-full h-full object-cover filter grayscale contrast-125 hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#2C2A29]/30 to-transparent pointer-events-none"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第二頁：關於我 (About) -->
+        <section id="page-about" class="page-section">
+            <div class="max-w-3xl mx-auto space-y-12">
+                <div class="text-center space-y-3">
+                    <span class="text-xs uppercase tracking-widest text-[#7A756D]">About Me</span>
+                    <h2 class="font-serif-jp text-3xl md:text-4xl font-normal tracking-wide">關於佐藤蓮</h2>
+                    <div class="w-12 h-0.5 bg-[#D4CEBE] mx-auto mt-2"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start pt-6">
+                    <div class="md:col-span-1">
+                        <img src="https://placehold.co/400x500/E5E0D5/5C574F?text=Portrait" alt="個人生活照" class="w-full rounded-xl shadow-md border border-[#EFECE6] filter grayscale">
+                    </div>
+                    <div class="md:col-span-2 space-y-6 text-[#5C574F] font-light leading-relaxed">
+                        <p class="text-lg font-serif-jp text-[#2C2A29]">
+                            「設計不只是外在的美感，更是內心秩序的延伸。」
+                        </p>
+                        <p>
+                            我出生於京都，目前於東京與台北兩地擔任自由接案設計師。畢業於多摩美術大學設計學系，擁有超過 6 年的品牌識別與數位產品設計經驗。
+                        </p>
+                        <p>
+                            我的創作靈感多來自於日本傳統建築的留白美學、日常光影的變化，以及大自然的質地。我深信「少即是多」，每一次的減法都是為了突顯最重要的核心價值。
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 pt-4 border-t border-[#EFECE6] text-sm">
+                            <div>
+                                <span class="block font-semibold text-[#2C2A29]">專長領域</span>
+                                <span class="text-[#7A756D]">UI/UX、品牌設計、攝影</span>
+                            </div>
+                            <div>
+                                <span class="block font-semibold text-[#2C2A29]">居住城市</span>
+                                <span class="text-[#7A756D]">東京 / 台北</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 經歷與技能 -->
+                <div class="pt-8 space-y-6">
+                    <h3 class="font-serif-jp text-2xl font-normal text-center">經歷與核心能力</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="jp-card p-6 rounded-xl space-y-2">
+                            <span class="text-xs text-[#7A756D]">2020 - PRESENT</span>
+                            <h4 class="font-semibold text-lg text-[#2C2A29]">資深品牌與 UI 設計師</h4>
+                            <p class="text-sm text-[#6B655D]">協助多間日本與海外企業進行品牌數位轉型與官網設計重構。</p>
+                        </div>
+                        <div class="jp-card p-6 rounded-xl space-y-2">
+                            <span class="text-xs text-[#7A756D]">2017 - 2020</span>
+                            <h4 class="font-semibold text-lg text-[#2C2A29]">東京設計工作室視覺設計</h4>
+                            <p class="text-sm text-[#6B655D]">主導多個實體展覽視覺、包裝設計及平面刊物出版。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第三頁：作品集 (Works) -->
+        <section id="page-works" class="page-section">
+            <div class="space-y-12">
+                <div class="text-center space-y-3">
+                    <span class="text-xs uppercase tracking-widest text-[#7A756D]">Selected Works</span>
+                    <h2 class="font-serif-jp text-3xl md:text-4xl font-normal tracking-wide">精選作品集</h2>
+                    <p class="text-[#6B655D] text-sm">探索近期參與的品牌識別、網頁設計與攝影專案</p>
+                    <div class="w-12 h-0.5 bg-[#D4CEBE] mx-auto mt-2"></div>
+                </div>
+
+                <!-- 作品列表網格 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- 作品 1 -->
+                    <div class="jp-card rounded-xl overflow-hidden group cursor-pointer">
+                        <div class="overflow-hidden aspect-video bg-[#EFECE6]">
+                            <img src="https://placehold.co/800x500/E5E0D5/5C574F?text=Komorebi+Branding" alt="作品1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <span class="text-xs text-[#7A756D] uppercase tracking-wider">Branding / Web</span>
+                            <h3 class="font-serif-jp text-xl font-semibold text-[#2C2A29]">木漏日茶屋 (Komorebi Tea)</h3>
+                            <p class="text-sm text-[#6B655D] font-light leading-relaxed">
+                                為京都百年茶屋打造的全新數位形象官網與包裝識別，融入自然光影與極簡日式美學。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 作品 2 -->
+                    <div class="jp-card rounded-xl overflow-hidden group cursor-pointer">
+                        <div class="overflow-hidden aspect-video bg-[#EFECE6]">
+                            <img src="https://placehold.co/800x500/E5E0D5/5C574F?text=Minimal+Architecture" alt="作品2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <span class="text-xs text-[#7A756D] uppercase tracking-wider">UI/UX Design</span>
+                            <h3 class="font-serif-jp text-xl font-semibold text-[#2C2A29]">靜思空間 App 介面設計</h3>
+                            <p class="text-sm text-[#6B655D] font-light leading-relaxed">
+                                專為現代高壓都市人設計的冥想與專注應用程式，透過極簡介面降低視覺干擾。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 作品 3 -->
+                    <div class="jp-card rounded-xl overflow-hidden group cursor-pointer">
+                        <div class="overflow-hidden aspect-video bg-[#EFECE6]">
+                            <img src="https://placehold.co/800x500/E5E0D5/5C574F?text=Tokyo+Monochrome" alt="作品3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <span class="text-xs text-[#7A756D] uppercase tracking-wider">Photography</span>
+                            <h3 class="font-serif-jp text-xl font-semibold text-[#2C2A29]">東京街頭單色攝影集</h3>
+                            <p class="text-sm text-[#6B655D] font-light leading-relaxed">
+                                捕捉東京日常街角的光影交錯與寂靜時刻，探討混凝土與人的精神連結。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 作品 4 -->
+                    <div class="jp-card rounded-xl overflow-hidden group cursor-pointer">
+                        <div class="overflow-hidden aspect-video bg-[#EFECE6]">
+                            <img src="https://placehold.co/800x500/E5E0D5/5C574F?text=Sumi+Ink+Craft" alt="作品4" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <span class="text-xs text-[#7A756D] uppercase tracking-wider">Art Direction</span>
+                            <h3 class="font-serif-jp text-xl font-semibold text-[#2C2A29]">墨流工藝視覺識別</h3>
+                            <p class="text-sm text-[#6B655D] font-light leading-relaxed">
+                                結合傳統墨流藝術與現代平面排版，為手工藝職人塑造當代藝術品牌形象。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第四頁：聯絡我 (Contact) -->
+        <section id="page-contact" class="page-section">
+            <div class="max-w-2xl mx-auto space-y-10">
+                <div class="text-center space-y-3">
+                    <span class="text-xs uppercase tracking-widest text-[#7A756D]">Get In Touch</span>
+                    <h2 class="font-serif-jp text-3xl md:text-4xl font-normal tracking-wide">與我聯繫</h2>
+                    <p class="text-[#6B655D] text-sm">無論是專案合作、設計諮詢或單純交流，歡迎隨時與我傳送訊息。</p>
+                    <div class="w-12 h-0.5 bg-[#D4CEBE] mx-auto mt-2"></div>
+                </div>
+
+                <div class="jp-card p-8 md:p-10 rounded-2xl shadow-sm">
+                    <form onsubmit="handleFormSubmit(event)" class="space-y-6">
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider font-semibold text-[#5C574F] mb-2">你的姓名 / 稱呼</label>
+                            <input type="text" required placeholder="例如：林小美" class="w-full px-4 py-3 bg-[#FBF9F5] border border-[#EFECE6] rounded-xl focus:outline-none focus:border-[#2C2A29] text-sm transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider font-semibold text-[#5C574F] mb-2">電子郵件</label>
+                            <input type="email" required placeholder="name@example.com" class="w-full px-4 py-3 bg-[#FBF9F5] border border-[#EFECE6] rounded-xl focus:outline-none focus:border-[#2C2A29] text-sm transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider font-semibold text-[#5C574F] mb-2">訊息內容</label>
+                            <textarea rows="4" required placeholder="請簡述您的專案需求或想聊聊的內容..." class="w-full px-4 py-3 bg-[#FBF9F5] border border-[#EFECE6] rounded-xl focus:outline-none focus:border-[#2C2A29] text-sm transition-colors resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-4 bg-[#2C2A29] text-[#FBF9F5] text-sm tracking-wider font-medium rounded-xl hover:bg-[#4A4745] transition-all shadow-md">
+                            發送訊息
+                        </button>
+                    </form>
+                    <!-- 成功提示訊息 -->
+                    <div id="success-msg" class="hidden mt-6 p-4 bg-[#EFECE6] text-[#2C2A29] text-center text-sm rounded-xl font-medium animate-fade-in">
+                        感謝您的來信！佐藤蓮將會在 2 個工作天內回覆您。
+                    </div>
+                </div>
+
+                <div class="text-center text-sm text-[#7A756D] space-y-1">
+                    <p>電子郵件：hello@ren-sato.design</p>
+                    <p>辦公室地點：東京都港區 / 台北市大安區</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 頁尾 -->
+    <footer class="mt-auto border-t border-[#EFECE6] py-8 bg-[#FBF9F5]">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between text-xs text-[#7A756D] space-y-4 md:space-y-0">
+            <p>&copy; 2026 REN SATO. All Rights Reserved. Crafted with minimalist aesthetic.</p>
+            <div class="flex space-x-6">
+                <a href="#" class="hover:text-[#2C2A29] transition-colors">Instagram</a>
+                <a href="#" class="hover:text-[#2C2A29] transition-colors">Behance</a>
+                <a href="#" class="hover:text-[#2C2A29] transition-colors">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript 互動邏輯 (單頁多視圖切換) -->
+    <script>
+        function switchPage(pageId) {
+            // 隱藏所有分頁
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(sec => {
+                sec.classList.remove('active');
+            });
+
+            // 顯示指定分頁
+            const targetPage = document.getElementById('page-' + pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // 更新導航選單樣式
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.classList.remove('text-[#2C2A29]', 'border-[#2C2A29]');
+                btn.classList.add('text-[#7A756D]', 'border-transparent');
+            });
+
+            const activeNav = document.getElementById('nav-' + pageId);
+            if (activeNav) {
+                activeNav.classList.remove('text-[#7A756D]', 'border-transparent');
+                activeNav.classList.add('text-[#2C2A29]', 'border-[#2C2A29]');
+            }
+
+            // 滾動回到頂部
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 手機版選單開關
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // 表單送出模擬
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const msgBox = document.getElementById('success-msg');
+            msgBox.classList.remove('hidden');
+            event.target.reset();
+            
+            // 5秒後自動隱藏提示
+            setTimeout(() => {
+                msgBox.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
